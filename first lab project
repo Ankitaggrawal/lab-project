@@ -1,0 +1,106 @@
+
+#An extra day is added to the calendar almost every four years as February 29, and the day is called a leap day.
+#It corrects the calendar for the fact that our planet takes approximately 365.25 days to orbit the sun.
+#A leap year contains a leap day. In the Gregorian calendar, three conditions are used to identify leap years:
+#The year can be evenly divided by 4, is a leap year, unless: The year can be evenly divided by 100, it is NOT a leap year,
+#unless: The year is also evenly divisible by 400. Then it is a leap year. Write function to decide whether it is a leap year.
+#If it is a leap year, return the Boolean True, otherwise return False
+
+def is_leap(year):
+    leap = False
+ 
+    if year%4==0:
+        if year%100==0:
+            if year%400==0:
+                leap=True
+            else:
+                leap=False
+        else:
+             leap=True
+    else:
+        leap=False
+
+    return leap
+
+year = int(input('Enter The Year :' ))
+print(is_leap(year))
+
+#Enter The Year :1998
+#False
+
+#Given an integer ‘n’, write a python code to perform the following conditional actions: If ‘n’ is odd,
+#print Weird If ‘n’ is even and in the inclusive range of 2 to 5, print Not Weird If ‘n’ is even and in the inclusive range of 6 to 20,
+#print Weird If ‘n’ is even and greater than 20, print Not Weird
+
+n = int(input('Enter The Number : '))
+if n % 2 == 1:
+    print("Weird")
+elif n % 2 == 0 and 2 <= n <= 5:
+    print("Not Weird")
+elif n % 2 == 0 and 6 <= n <= 20:
+    print("Weird")
+else:
+    print("Not Weird")
+
+
+#The following list represents a party with 7 guests, in which ‘Hardik’ showed up first and ‘Rahane’ was the last to arrive:
+
+#Arrivals = ['Hardik', 'Rahul', 'Virat', 'Rishabh’, ‘Mahi’ 'Rohit', 'Rahane']
+#A guest is considered 'fashionably late' if they arrived after at least half of the party's guests. However, they must not be the very last guest (that's taking it too far). In the above example, ‘rishabh’, ‘Mahi’ and ‘Rohit’ are the only guests who were fashionably late.
+
+#Write the function which takes a list of party attendees as well as a person, and tells us whether that person is fashionably late.
+
+    Guest_List = ['Hardik', 'Rahul', 'Virat', 'Rishabh', 'Mahi', 'Rohit', 'Rahane']
+Guest_Name = str(input('Enter Guest Name :-'))
+
+def Find_Guest_Fashionably_Late(Guest_List , Guest_Name) :
+   Count_of_Guests = len(Guest_List)
+
+Half_of_Guest = (Count_of_Guests // 2) + ( 0 if Count_of_Guests % 2 == 0 else 1)
+
+Guest_arrv_pos = Guest_List.index(Guest_Name)
+
+if Guest_arrv_pos > Half_of_Guest and Guest_arrv_pos < Count_of_Guests :
+    print("The Guest , ",Guest_Name , " is NOT Fashionably Late .")
+else:
+    print("The Guest , ",Guest_Name , " is Fashionably Late .")
+
+#A researcher has gathered thousands of news articles. But she wants to focus her attention on articles including a specific word.
+#Write a function to help her filter her list of articles. Your function should meet the following 
+#criteria: Do not include documents where the keyword string shows up only as a part of a larger word.
+#For example, if she were looking for the keyword “closed”, you would not include the string “enclosed.”
+#She does not want you to distinguish upper case from lower case letters. So the phrase “Closed the case.”
+#would be included when the keyword is “closed” Do not let periods or commas affect what is matched. “It is closed.”
+#would be included when the keyword is “closed”. But you can assume there are no other types of punctuation.
+
+#Assume, doc_list = ["The Learn Python Challenge Rohit.", "They bought a car", "bangalore"]
+
+    def word_search_2(title_list, keyword):
+    keyword = keyword.lower().strip('.,')
+
+    result_list = []
+    for i, title in enumerate(title_list):
+
+        words = title.lower().strip('.,').split()
+
+        if keyword in words:
+            result_list.append((i, title))
+
+    return result_list
+
+if __name__ == '__main__':
+    docs = ["The Learn Python Challenge Rohit.", "I love Python", "Python is Easy Language","OOP is Python Based Cource", "They bought a car", "bangalore"]
+    w = str(input('Enter the word to search : '))
+
+    print(word_search_2(docs, w))
+
+#An Employee's Basic Pay (BP) is to be read from user. DA is 40% of BP, HRA is 20% of BP,
+#and write a function to calculate the Gross Pay (GP) GP is computed as BP + DA + HRA.
+
+    BP = int(input('Employee Basic Pay (BP) : '))
+DA = BP*(40/100)
+print('DA of Employee is ,',DA)
+HRA = BP*(20/100)
+print('HRA of Employee is ,',HRA)
+GP = BP + DA + HRA
+print('Gross Pay (GP) of Employee is ,',GP)
